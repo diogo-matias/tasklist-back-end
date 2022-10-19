@@ -1,6 +1,4 @@
-import { randomUUID } from "crypto";
 import { Request, Response, NextFunction } from "express";
-import { findUserByEmail, findUserById, usersDB } from "../database/usersDB";
 
 export default function deleteMultipleTaskskMiddleware(
   req: Request,

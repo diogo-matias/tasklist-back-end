@@ -1,6 +1,7 @@
 import { randomUUID } from "crypto";
 import { Request, Response, NextFunction } from "express";
 import { findUserByEmail, findUserById } from "../database/usersDB";
+import { isEmailValid } from "../utils/emailValidade";
 
 export default function loginMiddleware(
   req: Request,
@@ -29,7 +30,7 @@ export default function loginMiddleware(
     });
   }
 
-  if (!email.includes("@")) {
+  if (!isEmailValid(email)) {
     return res.status(400).json({
       sucess: false,
       message: "Email inválido",

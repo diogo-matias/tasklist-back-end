@@ -1,6 +1,6 @@
-import { randomUUID } from "crypto";
 import { Request, Response, NextFunction } from "express";
 import { findUserByEmail, findUserById } from "../database/usersDB";
+import { isEmailValid } from "../utils/emailValidade";
 
 export default function requiredFields(
   req: Request,
@@ -42,12 +42,11 @@ export default function requiredFields(
     });
   }
 
-  if (!email.includes("@")) {
+  if (!isEmailValid(email)) {
     return res.status(400).json({
       sucess: false,
       message: "Email inválido",
     });
   }
-
   next();
 }
