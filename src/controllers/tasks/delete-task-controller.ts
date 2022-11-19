@@ -1,9 +1,5 @@
 import { Request, Response } from "express";
-import {
-  tasksDB,
-  getTaskIndexById,
-  removeTasksById,
-} from "../../database/tasksDB";
+import { tasksDB, getTaskIndexById, removeTasksById } from "../../db/tasksDB";
 
 export default class DeleteTasksController {
   async delete(req: Request, res: Response) {

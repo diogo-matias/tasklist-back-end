@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { parseTasks } from "../../database/tasksDB";
+import { parseTasks } from "../../db/tasksDB";
 
-import { tasksDB } from "../../database/tasksDB";
+import { tasksDB } from "../../db/tasksDB";
 import {
   getTasksByUserId,
   filterByDescription,
   filterByDetail,
-} from "../../database/tasksDB";
+} from "../../db/tasksDB";
 
 export default class GetTasksController {
   async get(req: Request, res: Response) {

@@ -2,6 +2,7 @@ import { randomUUID } from "crypto";
 
 export class User {
   email: string;
+  name: string;
 
   private _id: string;
   get id() {
@@ -13,10 +14,11 @@ export class User {
     return this._password;
   }
 
-  constructor(email: string, password: string) {
+  constructor(email: string, password: string, name: string) {
     this._id = randomUUID();
     this.email = email.toLowerCase();
     this._password = password;
+    this.name = name;
   }
 
   parseKeys() {

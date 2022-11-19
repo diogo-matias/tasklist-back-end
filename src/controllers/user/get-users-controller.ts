@@ -1,13 +1,15 @@
 import { randomUUID } from "crypto";
 import { Request, Response } from "express";
-import { tasksDB } from "../../database/tasksDB";
-import { parseUsers, usersDB } from "../../database/usersDB";
-import { User } from "../../models/User";
+import { tasksDB } from "../../db/tasksDB";
+import { parseUsers, usersDB } from "../../db/usersDB";
+import { User } from "../../models/user";
+import { UsersRepository } from "../../repositories/users";
 
 export default class GetUserController {
   async get(req: Request, res: Response) {
-    const { email, password } = req.body;
+    const repository = new UsersRepository();
 
-    return res.json(parseUsers(usersDB));
+    const users = await repository.getAllUUsers();
+    return res.json(users);
   }
 }

@@ -1,6 +1,6 @@
 import { randomUUID } from "crypto";
 import { Request, Response, NextFunction } from "express";
-import { findUserByEmail, findUserById, usersDB } from "../database/usersDB";
+import { findUserByEmail, findUserById, usersDB } from "../db/usersDB";
 
 export default function createTaskMiddleware(
   req: Request,

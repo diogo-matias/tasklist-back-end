@@ -1,4 +1,4 @@
-import { User } from "../models/User";
+import { User } from "../models/user";
 interface user {
   id: string;
   email: string;

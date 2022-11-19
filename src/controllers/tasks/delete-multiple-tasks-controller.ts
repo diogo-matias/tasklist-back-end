@@ -3,8 +3,8 @@ import {
   removeTasksById,
   getTasksByUserId,
   parseTasks,
-} from "../../database/tasksDB";
-import type { task } from "../../database/tasksDB";
+} from "../../db/tasksDB";
+import type { task } from "../../db/tasksDB";
 
 export default class DeleteMultipleTasksController {
   async post(req: Request, res: Response) {

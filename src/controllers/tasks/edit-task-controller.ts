@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { parseTasks, tasksDB } from "../../database/tasksDB";
+import { parseTasks, tasksDB } from "../../db/tasksDB";
 import {
   getTasksByUserId,
   getTaskIndexById,
   getTaskById,
-} from "../../database/tasksDB";
+} from "../../db/tasksDB";
 
 export default class EditTasksController {
   async put(req: Request, res: Response) {

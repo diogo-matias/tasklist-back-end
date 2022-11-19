@@ -1,8 +1,8 @@
 import { randomUUID } from "crypto";
 import { Request, Response } from "express";
 import { json } from "stream/consumers";
-import { tasksDB } from "../../database/tasksDB";
-import { usersDB, findUserByEmail, auth } from "../../database/usersDB";
+import { tasksDB } from "../../db/tasksDB";
+import { usersDB, findUserByEmail, auth } from "../../db/usersDB";
 
 export default class LoginController {
   async post(req: Request, res: Response) {

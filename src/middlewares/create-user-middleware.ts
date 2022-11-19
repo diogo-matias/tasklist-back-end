@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { findUserByEmail, findUserById } from "../database/usersDB";
-import { isEmailValid } from "../utils/emailValidade";
+import { findUserByEmail, findUserById } from "../db/usersDB";
+import { isEmailValid } from "../utils/email-validade";
 
 export default function requiredFields(
   req: Request,

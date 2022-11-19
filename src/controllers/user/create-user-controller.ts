@@ -1,14 +1,18 @@
 import { randomUUID } from "crypto";
 import { Request, Response } from "express";
-import { tasksDB } from "../../database/tasksDB";
-import { usersDB } from "../../database/usersDB";
-import { User } from "../../models/User";
+import { tasksDB } from "../../db/tasksDB";
+import { usersDB } from "../../db/usersDB";
+import { User } from "../../models/user";
+import { UsersRepository } from "../../repositories/users";
 
 export default class CreateUserController {
   async post(req: Request, res: Response) {
     const { email, password } = req.body;
 
-    const user = new User(email, password);
+    const repository = new UsersRepository();
+
+    const user = new User(email, password, name);
+    repository.createUser(user);
 
     usersDB.push(user);
 

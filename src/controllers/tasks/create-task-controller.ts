@@ -1,8 +1,8 @@
 import { randomUUID } from "crypto";
 import { Request, Response } from "express";
-import { tasksDB } from "../../database/tasksDB";
-import { getTasksByUserId, parseTasks } from "../../database/tasksDB";
-import { Task } from "../../models/Task";
+import { tasksDB } from "../../db/tasksDB";
+import { getTasksByUserId, parseTasks } from "../../db/tasksDB";
+import { Task } from "../../models/task";
 
 export default class CreateTasksController {
   async post(req: Request, res: Response) {

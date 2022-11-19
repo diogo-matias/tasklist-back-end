@@ -1,7 +1,7 @@
 import { randomUUID } from "crypto";
 import { Request, Response, NextFunction } from "express";
-import { getTaskIndexById } from "../database/tasksDB";
-import { findUserByEmail, findUserById, usersDB } from "../database/usersDB";
+import { getTaskIndexById } from "../db/tasksDB";
+import { findUserByEmail, findUserById, usersDB } from "../db/usersDB";
 
 export default function deleteTaskMiddleware(
   req: Request,

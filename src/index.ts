@@ -1,8 +1,9 @@
 import express from "express";
-import { colors } from "./utils/consoleColors";
+import { colors } from "./utils/console-colors";
 import Routes from "./routes";
 import cors from "cors";
 import authMiddleware from "./middlewares/authMiddleware";
+import { pgHelper } from "./database/pg-helper";
 
 const app = express();
 const port = 3333;
@@ -17,6 +18,8 @@ app.use(authMiddleware);
 routes.tasks(app);
 routes.users(app);
 
-app.listen(process.env.PORT || 3333, () =>
-  console.log(`${green}Servidor${blue} Rodando ${red}na porta`, port)
-);
+pgHelper.connect().then(() => {
+  app.listen(process.env.PORT || 3333, () =>
+    console.log(`${green}Servidor${blue} Rodando ${red}na porta`, port)
+  );
+});
