@@ -5,26 +5,22 @@ import {
   getTaskIndexById,
   getTaskById,
 } from "../../db/tasksDB";
+import { TasksRepository } from "../../repositories/tasks.repository";
 
 export default class EditTasksController {
   async put(req: Request, res: Response) {
+    const { updateTask, getTasksByFilters } = new TasksRepository();
     const { description, detail } = req.body;
     const { task_id } = req.params;
     const { arquived } = req.query;
-    const task = getTaskById(task_id);
-
     const arquivedBool = arquived === "true" ? true : false;
 
-    task.description = description;
-    task.detail = detail;
-    task.arquived = arquivedBool;
-
-    const tasks = getTasksByUserId(task.user_id);
+    const tasks = await updateTask(task_id, description, detail, arquivedBool);
 
     res.json({
       success: true,
       message: "Task editada com sucesso",
-      data: parseTasks(tasks),
+      data: tasks,
     });
   }
 }

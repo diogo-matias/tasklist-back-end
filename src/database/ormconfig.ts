@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { DataSourceOptions } from "typeorm";
+import { DataSourceOptions, DataSource } from "typeorm";
 
 const config: DataSourceOptions = {
   type: "postgres",
@@ -10,5 +10,8 @@ const config: DataSourceOptions = {
   ssl: {
     rejectUnauthorized: false,
   },
+  entities: ["src/database/entities/*.ts"],
+  migrations: ["src/database/migrations/*.ts"],
 };
+
 export default config;

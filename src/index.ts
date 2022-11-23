@@ -13,7 +13,7 @@ const { green, blue, red } = colors;
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
-app.use(authMiddleware);
+// app.use(authMiddleware);
 
 routes.tasks(app);
 routes.users(app);

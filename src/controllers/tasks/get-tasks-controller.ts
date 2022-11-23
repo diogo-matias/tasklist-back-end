@@ -7,22 +7,20 @@ import {
   filterByDescription,
   filterByDetail,
 } from "../../db/tasksDB";
+import { TasksRepository } from "../../repositories/tasks.repository";
 
 export default class GetTasksController {
   async get(req: Request, res: Response) {
+    const { getTasksByFilters } = new TasksRepository();
     const { user_id } = req.params;
     const { description, detail } = req.query;
-    const tasks = getTasksByUserId(user_id);
-    let response = tasks;
 
-    if (description) {
-      response = filterByDescription(response, description.toString());
-    }
+    const tasks = await getTasksByFilters(
+      user_id,
+      description as string,
+      detail as string
+    );
 
-    if (detail) {
-      response = filterByDetail(response, detail.toString());
-    }
-
-    return res.json(parseTasks(response));
+    return res.json(tasks);
   }
 }

@@ -7,9 +7,9 @@ export default function requiredFields(
   res: Response,
   next: NextFunction
 ) {
-  const { email, password, Rpassword } = req.body;
+  const { email, password, Rpassword, name } = req.body;
 
-  if (!email || !password || !Rpassword) {
+  if (!email || !password || !Rpassword || !name) {
     return res
       .status(400)
       .json({ sucess: false, message: "Preencha todos os campos" });
